@@ -63,7 +63,7 @@ public class DistClient implements Watcher
 			
 					// Create a sequential znode with the Task object as its data.
 					// TODO replace XX with your group number.
-					taskNodeName = zk.create("/distXX/tasks/task-", dTaskSerial, Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL);
+					taskNodeName = zk.create("/dist10/tasks/task-", dTaskSerial, Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL);
 					System.out.println("DISTAPP : TaskNode : " + taskNodeName);
 			
 					//Place watch for the result znode which will be created under our task znode.
