@@ -3,8 +3,7 @@ Programming Assignment 3 of COMP-512 Fall 2022
 
 **Disclaimer: I have created PA3 folder as parent of apache. So my commands include PA3 in them. Please remove according to your convenience.**
 
-**Commands to run a Zookeeper Ensemble and connect Clients (in brief):
-**
+**Commands to run a Zookeeper Ensemble and connect Clients (in brief):**
 
 Go to particular lab folder in apache, then
 To start: ~/PA3/apache-zookeeper-3.6.2-bin/bin/zkServer.sh start zoo-base.cfg
