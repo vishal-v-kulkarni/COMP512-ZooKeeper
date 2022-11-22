@@ -19,6 +19,7 @@ Go to PA3 folder and run command:
 **Compile Client, Server and Tasks files**
 
 **Run this on all clients and zk ensemble servers:**
+
 --> export ZOOBINDIR=~/PA3/apache-zookeeper-3.6.2-bin/bin
 --> . $ZOOBINDIR/zkEnv.sh
 
@@ -27,5 +28,6 @@ Go to PA3 folder and run command:
 **Task** - Go to zk/task and run: ./compiletask.sh
 
 **To run server and client**
+
 **Client** - Go to zk/clnt and run: ./runclnt.sh
 **Server** - Go to zk/dist and run: ./runsrvr.sh
