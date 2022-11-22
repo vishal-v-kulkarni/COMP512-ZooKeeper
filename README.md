@@ -6,6 +6,7 @@ Programming Assignment 3 of COMP-512 Fall 2022
 **Commands to run a Zookeeper Ensemble and connect Clients (in brief):**
 
 Go to particular lab folder in apache, then
+
 To start: ~/PA3/apache-zookeeper-3.6.2-bin/bin/zkServer.sh start zoo-base.cfg
 
 To stop: ~/PA3/apache-zookeeper-3.6.2-bin/bin/zkServer.sh stop zoo-base.cfg
