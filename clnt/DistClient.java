@@ -176,6 +176,7 @@ public class DistClient implements Watcher
 		DistClient dt = new DistClient(System.getenv("ZKSERVER"), mcpi);
 
 		// Initiate the zk related workflow.
+		
 		dt.startClient();
 
 		//DEBUG ONLY - the compute function should be called by the worker.
