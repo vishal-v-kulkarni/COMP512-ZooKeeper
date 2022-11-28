@@ -7,20 +7,20 @@ Programming Assignment 3 of COMP-512 Fall 2022
 
 Go to particular lab folder in apache, then
 
-To start: ~/PA3/apache-zookeeper-3.6.2-bin/bin/zkServer.sh start zoo-base.cfg
+To start: ~/apache-zookeeper-3.6.2-bin/bin/zkServer.sh start zoo-base.cfg
 
-To stop: ~/PA3/apache-zookeeper-3.6.2-bin/bin/zkServer.sh stop zoo-base.cfg
+To stop: ~/apache-zookeeper-3.6.2-bin/bin/zkServer.sh stop zoo-base.cfg
 
 **For clients to connect to ZK ensemble:**
 
 Go to PA3 folder and run command:
-~/PA3/apache-zookeeper-3.6.2-bin/bin/zkCli.sh -server lab2-13.cs.mcgill.ca:21810,lab2-14.cs.mcgill.ca:21810,lab2-15.cs.mcgill.ca:21810
+~/apache-zookeeper-3.6.2-bin/bin/zkCli.sh -server lab2-13.cs.mcgill.ca:21810,lab2-14.cs.mcgill.ca:21810,lab2-15.cs.mcgill.ca:21810
 
 **Compile Client, Server and Tasks files**
 
 **Run this on all clients and zk ensemble servers:**
 
---> export ZOOBINDIR=~/PA3/apache-zookeeper-3.6.2-bin/bin
+--> export ZOOBINDIR=~/apache-zookeeper-3.6.2-bin/bin
 --> . $ZOOBINDIR/zkEnv.sh
 
 **Client** - Go to zk/clnt and run: ./compileclnt.sh
