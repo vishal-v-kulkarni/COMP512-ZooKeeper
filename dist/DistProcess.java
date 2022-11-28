@@ -186,6 +186,11 @@ public class DistProcess implements Watcher
 		dt.startProcess();
 
 		//Replace this with an approach that will make sure that the process is up and running forever.
-		Thread.sleep(20000); 
+		//Thread.sleep(20000); 
+
+		while(true){
+			//do nothing - keep on looping
+		}
+
 	}
 }
