@@ -6,9 +6,11 @@ All materials provided to the students as part of this course is the property of
 import java.io.*;
 
 import java.util.*;
+import java.util.HashMap;
 
 // To get the name of the host.
 import java.net.*;
+import java.nio.charset.StandardCharsets;
 
 //To get the process id.
 import java.lang.management.*;
@@ -32,7 +34,6 @@ import org.apache.zookeeper.KeeperException.Code;
 //	REMEMBER !! ZK client library is single thread - Watches & CallBacks should not be used for time consuming tasks.
 //		Ideally, Watches & CallBacks should only be used to assign the "work" to a separate thread inside your program.
 public class DistProcess implements Watcher
-																		, AsyncCallback.ChildrenCallback
 {
 	ZooKeeper zk;
 	String zkServer, pinfo;
@@ -64,7 +65,7 @@ public class DistProcess implements Watcher
 		zk = new ZooKeeper(zkServer, 10000, this); //connect to ZK.
 	}
 
-	void initalize()
+	void initalize() throws IOException, UnknownHostException, KeeperException, InterruptedException
 	{
 		try
 		{
@@ -96,8 +97,6 @@ public class DistProcess implements Watcher
 		{ System.out.println(ke); }
 		catch(InterruptedException ie)
 		{ System.out.println(ie); }
-
-		System.out.println("DISTAPP : Role : " + " I will be functioning as " +(isMaster?"master":"worker"));
 
 	}
 
@@ -303,7 +302,7 @@ public class DistProcess implements Watcher
 	AsyncCallback.DataCallback workerTaskCallback = new AsyncCallback.DataCallback() {
 		public void processResult(int rc, String path, Object ctx, byte[] data, Stat stat) {
 			
-			System.out.println("DISTAPP : worker_task_callback : processResult : DataCallback : " + rc + ":" + path + ":" + ctx + ":" + stat);
+			System.out.println("DISTAPP : workerTaskCallback : processResult : DataCallback : " + rc + ":" + path + ":" + ctx + ":" + stat);
 
 			// Check the Data of the worker node to see if the worker has been assigned a task
 			String workerStatus = new String(data, StandardCharsets.UTF_8);
@@ -357,7 +356,7 @@ public class DistProcess implements Watcher
 	AsyncCallback.DataCallback taskCompletedCallback = new AsyncCallback.DataCallback() {
 		public void processResult(int rc, String path, Object ctx, byte[] data, Stat stat) {
 			
-			System.out.println("DISTAPP : master_task_completed_callback: processResult : DataCallback : " + rc + ":" + path + ":" + ctx + ":" + stat);
+			System.out.println("DISTAPP : taskCompletedCallback: processResult : DataCallback : " + rc + ":" + path + ":" + ctx + ":" + stat);
 			
 			try 
 			{
@@ -422,8 +421,18 @@ public class DistProcess implements Watcher
 			// Once we are connected, do our intialization stuff.
 			if(e.getPath() == null && e.getState() ==  Watcher.Event.KeeperState.SyncConnected && initalized == false) 
 			{
-				initalize();
-				initalized = true;
+				try{
+					initalize();
+					initalized = true;
+				}
+				catch(IOException io)
+				{System.out.println(io);}
+				catch(KeeperException ke)
+				{ System.out.println(ke); }
+				catch(InterruptedException ie)
+				{ System.out.println(ie); }
+				
+				
 			}
 		}
 
